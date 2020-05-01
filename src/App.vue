@@ -5,7 +5,7 @@
                 <h1>Animations</h1>
                 <hr>
                 <h3>Fade effect:</h3>
-                <button class="btn btn-primary" @click="showFirst = !showFirst">Show Alert</button>
+                <button class="btn btn-primary" @click="showFirst = !showFirst">Toggle Alert One</button>
                 <transition name="fade">
                     <div class="alert alert-info" role="alert" v-if="showFirst">This is fading info alert!</div>
                 </transition>
@@ -15,8 +15,8 @@
             <div class="col-xs-12 col-sm-8 col-md-6">
                 <hr>
                 <h3>Slide effect:</h3>
-                <button class="btn btn-warning" @click="showSecond = !showSecond">Toggle Alert</button>
-                <transition name="slide">
+                <button class="btn btn-warning" @click="showSecond = !showSecond">Toggle Alert Two</button>
+                <transition name="slide" appear>
                     <div class="alert alert-warning" role="alert" v-if="showSecond">This is sliding info alert!</div>
                 </transition>
             </div>
@@ -28,8 +28,8 @@
     export default {
         data() {
             return {
-                showFirst: false,
-                showSecond: false
+                showFirst: true,
+                showSecond: true
             }
         }
     }
@@ -57,17 +57,20 @@
     opacity: 0;
 }
 .slide-enter {
-
+    opacity: 0;
 }
 /* Sliding animation */
 .slide-enter-active {
     animation: slide-in 1s ease-out forwards;
+    transition: opacity .4s;
 }
 .slide-leave {
 
 }
 .slide-leave-active {
     animation: slide-out 1s ease-in forwards;
+    transition: opacity 1.5s;
+    opacity: 0;
 }
 @keyframes slide-in {
     from {
