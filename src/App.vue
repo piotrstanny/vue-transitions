@@ -5,7 +5,9 @@
                 <h1>Animations</h1>
                 <hr>
                 <button class="btn btn-primary" @click="show = !show">Show Alert</button>
-                <div class="alert alert-info" role="alert" v-if="show">This is info alert!</div>
+                <transition name="fade">
+                    <div class="alert alert-info" role="alert" v-if="show">This is info alert!</div>
+                </transition>
             </div>
         </div>
     </div>
@@ -24,5 +26,18 @@
 <style>
 .container, .alert, hr {
     margin-top: 30px;
+}
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    transition: opacity .4s;
+}
+.fade-leave {
+
+}
+.fade-leave-active {
+    transition: opacity 1s;
+    opacity: 0;
 }
 </style>
